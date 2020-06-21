@@ -14,14 +14,9 @@ namespace EmployeeRegistration.Data
             _context = context;
         }
 
-        public void CreateEmployee(Employee employee)
+        public bool SaveChanges()
         {
-            if (employee == null)
-            {
-                throw new ArgumentNullException(nameof(employee));
-            }
-
-            _context.Add(employee);
+            return (_context.SaveChanges() >= 0);
         }
 
         public IEnumerable<Employee> GetAllEmployees()
@@ -34,9 +29,24 @@ namespace EmployeeRegistration.Data
             return _context.Employee.FirstOrDefault(p => p.Id == id);
         }
 
-        public bool SaveChanges()
+        public void CreateEmployee(Employee employee)
         {
-            return (_context.SaveChanges() >= 0);
+            if (employee == null)
+            {
+                throw new ArgumentNullException(nameof(employee));
+            }
+
+            _context.Employee.Add(employee);
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            if (employee == null)
+            {
+                throw new ArgumentNullException(nameof(employee));
+            }
+
+            _context.Employee.Update(employee);
         }
     }
 }

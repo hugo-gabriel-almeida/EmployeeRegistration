@@ -7,8 +7,9 @@ namespace EmployeeRegistration.Data
     public interface IEmployeeRepo
     {
         bool SaveChanges();
-        void CreateEmployee(Employee employee);
         IEnumerable<Employee> GetAllEmployees();
         Employee GetEmployeeById(int id);
+        void CreateEmployee(Employee employee);
+        void UpdateEmployee(Employee employee);
     }
 }

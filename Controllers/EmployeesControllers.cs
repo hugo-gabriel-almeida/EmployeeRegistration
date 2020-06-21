@@ -50,6 +50,22 @@ namespace EmployeeControllers
 
             return employeeReadDto;
         }
+
+        [HttpPut("{id}")]
+        public ActionResult <EmployeeReadDto> UpdateEmployee(int id,EmployeeUpdateDto employeeUpdateDto)
+        {
+            var employeeModel = _repository.GetEmployeeById(id);
+            if (employeeModel == null)
+            {
+                return NotFound("Funcionário não encontrado");
+            }
+            
+            _mapper.Map(employeeUpdateDto, employeeModel);
+            _repository.UpdateEmployee(employeeModel);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
     
 }
