@@ -15,7 +15,10 @@ namespace EmployeeRegistration.Models
         public DataType BirthDay { get; set; }
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail em formato inválido.")]
         public string Email { get; set; }
+        [Required]
         public char Genre { get; set; }
+        [Required]
+        [RegularExpression("/(^C#$|^Java$|^Angular$|^SQL$|^ASP$|)/")]
         public string Skills { get; set; }
     }
 }
