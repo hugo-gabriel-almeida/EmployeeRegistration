@@ -17,7 +17,6 @@ namespace EmployeeRegistration.Profiles
             CreateMap<Employee, EmployeeReadDto>().ForMember(destination => destination.BirthDay,
               map => map.MapFrom(
                   source => source.BirthDay.ToString("dd/MM/yyyy")));
-            CreateMap<EmployeeReadDto, Employee>();
         }
     }
 }

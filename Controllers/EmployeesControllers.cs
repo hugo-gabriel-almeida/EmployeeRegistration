@@ -11,28 +11,40 @@ namespace EmployeeControllers
     [ApiController]
     public class EmployeeController: ControllerBase
     {
-        private readonly IEmployeeRepo _reposutory;
+        private readonly IEmployeeRepo _repository;
         private readonly IMapper _mapper;
 
         public EmployeeController(IEmployeeRepo repository, IMapper mapper)
         {   
-            _reposutory = repository;
+            _repository = repository;
             _mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult <IEnumerable<EmployeeReadDto>> GetAllEmployees()
         {
-            var employees = _reposutory.GetAllEmployees();
+            var employees = _repository.GetAllEmployees();
             return Ok(_mapper.Map<IEnumerable<EmployeeReadDto>>(employees));
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult <EmployeeReadDto> GetEmployeeById(int id)
+        {
+            var employee = _repository.GetEmployeeById(id);
+
+            if (employee != null)
+            {
+                return Ok(_mapper.Map<EmployeeReadDto>(employee));
+            }
+            return NotFound();
         }
 
         [HttpPost]
         public ActionResult <EmployeeReadDto> CreateEmployee(EmployeeCreateDto employeeCreateDto)
         {
             var employeModel = _mapper.Map<Employee>(employeeCreateDto);
-            _reposutory.CreateEmployee(employeModel);
-            _reposutory.SaveChanges();
+            _repository.CreateEmployee(employeModel);
+            _repository.SaveChanges();
 
             var employeeReadDto = _mapper.Map<EmployeeReadDto>(employeModel);
 

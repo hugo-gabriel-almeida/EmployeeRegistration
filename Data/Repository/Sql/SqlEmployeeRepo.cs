@@ -29,6 +29,11 @@ namespace EmployeeRegistration.Data
             return _context.Employee.ToList();
         }
 
+        public Employee GetEmployeeById(int id)
+        {
+            return _context.Employee.FirstOrDefault(p => p.Id == id);
+        }
+
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
