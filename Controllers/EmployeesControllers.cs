@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using AutoMapper;
 using EmployeeRegistration.Data;
 using EmployeeRegistration.Dtos;
@@ -17,6 +18,13 @@ namespace EmployeeControllers
         {   
             _reposutory = repository;
             _mapper = mapper;
+        }
+
+        [HttpGet]
+        public ActionResult <IEnumerable<EmployeeReadDto>> GetAllEmployees()
+        {
+            var employees = _reposutory.GetAllEmployees();
+            return Ok(_mapper.Map<IEnumerable<EmployeeReadDto>>(employees));
         }
 
         [HttpPost]

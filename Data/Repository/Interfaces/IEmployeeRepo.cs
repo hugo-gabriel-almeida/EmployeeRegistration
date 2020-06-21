@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using EmployeeRegistration.Dtos;
 using EmployeeRegistration.Models;
 
 namespace EmployeeRegistration.Data
@@ -6,5 +8,6 @@ namespace EmployeeRegistration.Data
     {
         bool SaveChanges();
         void CreateEmployee(Employee employee);
+        IEnumerable<Employee> GetAllEmployees();
     }
 }

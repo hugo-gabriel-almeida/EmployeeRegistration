@@ -14,7 +14,10 @@ namespace EmployeeRegistration.Profiles
               map => map.MapFrom(
                   source => DateTime.ParseExact(source.BirthDay, "dd/MM/yyyy", null)));
 
-            CreateMap<Employee, EmployeeReadDto>();
+            CreateMap<Employee, EmployeeReadDto>().ForMember(destination => destination.BirthDay,
+              map => map.MapFrom(
+                  source => source.BirthDay.ToString("dd/MM/yyyy")));
+            CreateMap<EmployeeReadDto, Employee>();
         }
     }
 }

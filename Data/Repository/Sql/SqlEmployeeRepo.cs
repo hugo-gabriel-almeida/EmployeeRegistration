@@ -1,6 +1,6 @@
-
-
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using EmployeeRegistration.Models;
 
 namespace EmployeeRegistration.Data
@@ -22,6 +22,11 @@ namespace EmployeeRegistration.Data
             }
 
             _context.Add(employee);
+        }
+
+        public IEnumerable<Employee> GetAllEmployees()
+        {
+            return _context.Employee.ToList();
         }
 
         public bool SaveChanges()
