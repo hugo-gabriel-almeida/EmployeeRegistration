@@ -1,5 +1,6 @@
-using Microsoft.EntityFrameworkCore;
 using EmployeeRegistration.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace EmployeeRegistration.Data
 {

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmployeeRegistration.Migrations
 {
@@ -12,8 +13,9 @@ namespace EmployeeRegistration.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 100, nullable: false),
-                    BirthDay = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(maxLength: 15, nullable: false),
+                    LastName = table.Column<string>(maxLength: 100, nullable: false),
+                    BirthDay = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Genre = table.Column<string>(nullable: false),
                     Skills = table.Column<string>(nullable: false)

@@ -5156,7 +5156,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hugo_\\.nuget\\packages\\": {}
+    "C:\\Users\\hugo_\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -5167,6 +5168,9 @@
       "packagesPath": "C:\\Users\\hugo_\\.nuget\\packages\\",
       "outputPath": "C:\\source\\EmployeeRegistration\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\hugo_\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
