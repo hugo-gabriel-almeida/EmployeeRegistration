@@ -21,7 +21,6 @@ namespace EmployeeRegistration.Dtos
         public string Email { get; set; }
 
         [Required]
-
         public char Genre { get; set; }
 
         [Required(ErrorMessage = "Habidates Permitidas: C#, Java, Angular, SQL, ASP")]
