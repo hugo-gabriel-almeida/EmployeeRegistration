@@ -18,7 +18,8 @@ namespace EmployeeRegistration.Migrations
                     BirthDay = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     Genre = table.Column<string>(nullable: false),
-                    Skills = table.Column<string>(nullable: false)
+                    Skills = table.Column<string>(nullable: false),
+                    Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

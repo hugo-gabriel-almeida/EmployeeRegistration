@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeRegistration.Models
@@ -26,5 +27,9 @@ namespace EmployeeRegistration.Models
         
         [Required]
         public string Skills { get; set; }
+        
+        [Required]
+        [DefaultValue(false)]
+        public bool Active { get; set; }
     }
 }
