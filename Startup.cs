@@ -39,6 +39,7 @@ namespace EmployeeRegistration
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IEmployeeRepo, SqlEmployeeRepo>();
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,7 +48,7 @@ namespace EmployeeRegistration
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors(option => option.AllowAnyOrigin()); ;
             app.UseHttpsRedirection();
 
             app.UseRouting();

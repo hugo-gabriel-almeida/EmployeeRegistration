@@ -16,5 +16,6 @@ namespace EmployeeRegistration.Dtos
         public char Genre { get; set; }
         
         public string Skills { get; set; }
+        public bool Active { get; set; }
     }
 }

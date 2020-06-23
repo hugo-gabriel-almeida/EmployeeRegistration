@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using EmployeeRegistration.Data;
 using EmployeeRegistration.Dtos;
 using EmployeeRegistration.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeControllers
@@ -21,7 +23,7 @@ namespace EmployeeControllers
         }
 
         [HttpGet]
-        public ActionResult <IEnumerable<EmployeeReadDto>> GetAllEmployees()
+        public async Task<ActionResult<IEnumerable<EmployeeReadDto>>> GetAllEmployees()
         {
             var employees = _repository.GetAllEmployees();
             return Ok(_mapper.Map<IEnumerable<EmployeeReadDto>>(employees));
