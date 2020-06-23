@@ -23,8 +23,8 @@ namespace EmployeeRegistration.Dtos
         [Required]
         public char Genre { get; set; }
 
-        [Required(ErrorMessage = "Habidates Permitidas: C#, Java, Angular, SQL, ASP")]
-        [RegularExpression("/^C#$|^Java$|^Angular$|^SQL$|^ASP$|/")]
+        [Required(ErrorMessage = "Habidates Permitidas: CSharp, Java, Angular, SQL, ASP")]
+        [RegularExpression("/^CSharp$|^Java$|^Angular$|^SQL$|^ASP$|/")]
         public string Skills { get; set; }
     }
 }
