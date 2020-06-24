@@ -30,7 +30,7 @@ namespace EmployeeControllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult <EmployeeReadDto> GetEmployeeById(int id)
+        public async Task<ActionResult<EmployeeReadDto>> GetEmployeeById(int id)
         {
             var employee = _repository.GetEmployeeById(id);
 
@@ -42,7 +42,7 @@ namespace EmployeeControllers
         }
 
         [HttpPost]
-        public ActionResult <EmployeeReadDto> CreateEmployee(EmployeeCreateDto employeeCreateDto)
+        public async Task<ActionResult<EmployeeReadDto>> CreateEmployee(EmployeeCreateDto employeeCreateDto)
         {
             var employeModel = _mapper.Map<Employee>(employeeCreateDto);
             _repository.CreateEmployee(employeModel);
@@ -54,7 +54,7 @@ namespace EmployeeControllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult <EmployeeReadDto> UpdateEmployee(int id,EmployeeUpdateDto employeeUpdateDto)
+        public async Task<ActionResult<EmployeeReadDto>> UpdateEmployee(int id,EmployeeUpdateDto employeeUpdateDto)
         {
             var employeeModel = _repository.GetEmployeeById(id);
             if (employeeModel == null)
@@ -63,6 +63,23 @@ namespace EmployeeControllers
             }
             
             _mapper.Map(employeeUpdateDto, employeeModel);
+            _repository.UpdateEmployee(employeeModel);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+
+        [HttpPut("{id}/changestatus/{active}")]
+        public async Task<ActionResult<EmployeeReadDto>> ChangeStatus(int id, bool active)
+        {
+            var employeeModel = _repository.GetEmployeeById(id);
+            if (employeeModel == null)
+            {
+                return NotFound("Funcionário não encontrado");
+            }
+
+            employeeModel.Active = active;
             _repository.UpdateEmployee(employeeModel);
             _repository.SaveChanges();
 
